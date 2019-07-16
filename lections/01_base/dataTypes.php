@@ -37,7 +37,7 @@ $object = new MyClass();
 
 // 7. resource
 $file = fopen('C:/text.txt', 'r');
-$file2 = fopen('/text2.txt', 'w+');
+$file2 = fopen('./text2.txt', 'w+');
 
 var_dump($file2);
 
