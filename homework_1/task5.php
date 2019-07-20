@@ -30,7 +30,7 @@ $cars = [
 
 echo '<pre>';
 
-foreach ($cars as $car => $value) {
-    echo "CAR $car<br>";
-    echo $value['model'] . ' ' . $value['speed'] . ' ' . $value['doors'] . ' ' . $value['year'] . '<br><br>';
+foreach ($cars as $brand => $car) {
+    echo "CAR $brand<br>";
+    echo $car['model'] . ' ' . $car['speed'] . ' ' . $car['doors'] . ' ' . $car['year'] . '<br><br>';
 }
