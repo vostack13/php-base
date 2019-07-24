@@ -44,16 +44,16 @@ function task3($row, $collum)
 {
     if (!is_int($row) || !is_int($collum)) {
         echo '<tr>' .
-                '<td>' .
-                    'Значения должны быть целыми числами' .
-                '</td>' .
+            '<td>' .
+            'Значения должны быть целыми числами' .
+            '</td>' .
             '</tr>';
 
         return;
     }
 
     if ($row > 1) {
-        task3($row -1, $collum);
+        task3($row - 1, $collum);
     }
 
     echo '<tr>';
@@ -67,17 +67,17 @@ function task3($row, $collum)
 
 function task4()
 {
-    echo date('d:m:Y H:i', time()).PHP_EOL;
-    echo strtotime('2016-02-24 12:10:22').PHP_EOL;
+    echo date('d:m:Y H:i', time()) . PHP_EOL;
+    echo strtotime('2016-02-24 12:10:22') . PHP_EOL;
 }
 
 function task5($stringWithUpper, $stringWithWord)
 {
-    echo preg_replace('/[A-ZА-ЯЁ]/u', '', $stringWithUpper).PHP_EOL;
-    echo str_replace('Две', 'Три', $stringWithWord).PHP_EOL;
+    echo preg_replace('/[A-ZА-ЯЁ]/u', '', $stringWithUpper) . PHP_EOL;
+    echo str_replace('Две', 'Три', $stringWithWord) . PHP_EOL;
 }
 
 function task6($fileName)
 {
-    echo file_get_contents($fileName).PHP_EOL;
+    echo file_get_contents($fileName) . PHP_EOL;
 }
