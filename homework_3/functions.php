@@ -68,3 +68,92 @@ function task1(string $fileName)
 
     echo '</div>';
 }
+
+function task2()
+{
+    echo '<pre>';
+
+    /*
+     * 1. СОЗДАНИЕ МАССИВА
+     */
+
+    $outputArray = [
+        'users' => [
+            [
+                'id' => '001',
+                'name' => 'Петр',
+                'email' => 'petr@email.com',
+                'phone' => '+79805693453',
+                'isSendingReport' => false,
+            ],
+            [
+                'id' => '002',
+                'name' => 'Маша',
+                'email' => 'masha@email.com',
+                'phone' => '+79809754234',
+                'isSendingReport' => false,
+            ],
+            [
+                'id' => '003',
+                'name' => 'Степан',
+                'email' => 'stepan@email.com',
+                'phone' => '+79805531233',
+                'isSendingReport' => false,
+            ],
+        ]
+    ];
+
+    file_put_contents('output.json', json_encode($outputArray));
+
+    /*
+     * 2. ИЗМЕНЕНИЕ МАССИВА
+     */
+
+    $fileJsonOutput = file_get_contents('output.json');
+    $outputData = json_decode($fileJsonOutput, true);
+
+    $outputArray2['users'] = array_map(function ($user) {
+        $user['isSendingReport'] = rand(0, 1) ? true : false;
+
+        return $user;
+    }, $outputData['users']);
+
+    file_put_contents('output2.json', json_encode($outputArray2));
+
+    /*
+     * 3. СРАВНЕНИЕ МАССИВОВ
+     * Вывод на экран элементов второго массива, которые были изменены.
+     */
+
+    $fileJsonOutputOne = file_get_contents('output.json');
+    $outputDataOne = json_decode($fileJsonOutputOne, true);
+    $fileJsonOutputTwo = file_get_contents('output2.json');
+    $outputDataTwo = json_decode($fileJsonOutputTwo, true);
+
+    function diffArray(array $firstArray, array $secondArray)
+    {
+        $resultDiffArray = [];
+
+        foreach ($firstArray as $key => $value) {
+            if (is_array($value)) {
+                $new = diffArray($value, $secondArray[$key]);
+
+                if ($new) {
+                    $resultDiffArray[$key] = $new;
+                }
+            } else {
+                $diff = array_diff($secondArray, $firstArray);
+
+                if ($diff) {
+                    return $diff;
+                }
+            }
+        }
+
+        return $resultDiffArray;
+    }
+
+    var_export(diffArray($outputDataOne, $outputDataTwo));
+
+    echo '</pre>';
+}

@@ -48,7 +48,10 @@
 
 $users = [
     'users' => [
-        ['name' => 'Dima', 'id' => 1],
+        [
+            'name' => 'Dima',
+            'id' => 1
+        ],
         ['name' => 'Dima2', 'id' => 2],
         ['name' => 'Dima3', 'id' => 3, 'properties' => ['city' => 'SPb']],
     ]
