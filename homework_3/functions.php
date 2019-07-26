@@ -165,3 +165,38 @@ function task2()
 
     echo '</pre>';
 }
+
+/*
+ * ЗАДАНИЕ 3
+ */
+
+function task3()
+{
+    $arraySomeNumbers = [];
+
+    for ($i = 0; $i < 50; $i++) {
+        $arraySomeNumbers[] = rand(1, 100);
+    }
+
+    $newCSVFile = fopen('numbers.csv', 'w');
+    fputcsv($newCSVFile, $arraySomeNumbers, ';');
+    fclose($newCSVFile);
+
+    $newCSVFile = fopen('numbers.csv', 'r');
+
+    while (($line = fgetcsv($newCSVFile, 0, ";")) !== false) {
+        $arrayFromCsv = $line;
+    }
+
+    $sum = array_reduce($arrayFromCsv, function ($result, $value) {
+        return $value % 2 === 0 ? $result + $value : $result;
+    }, 0);
+
+
+    echo '<pre>Сумма четных чисел из csv файла равна: <b>' . $sum . '</b></pre>';
+}
+
+/*
+ * ЗАДАНИЕ 4
+ */
+
