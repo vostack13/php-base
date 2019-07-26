@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * ЗАДАНИЕ 1
+ */
+
 function task1(string $fileName)
 {
     $fileData = file_get_contents($fileName);
@@ -69,6 +73,10 @@ function task1(string $fileName)
     echo '</div>';
 }
 
+/*
+ * ЗАДАНИЕ 2
+ */
+
 function task2()
 {
     echo '<pre>';
@@ -126,8 +134,8 @@ function task2()
      */
 
     $fileJsonOutputOne = file_get_contents('output.json');
-    $outputDataOne = json_decode($fileJsonOutputOne, true);
     $fileJsonOutputTwo = file_get_contents('output2.json');
+    $outputDataOne = json_decode($fileJsonOutputOne, true);
     $outputDataTwo = json_decode($fileJsonOutputTwo, true);
 
     function diffArray(array $firstArray, array $secondArray)
